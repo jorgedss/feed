@@ -16,6 +16,11 @@ export function App() {
           author = 'Jorge'
           content = 'GAVv dshdga  hdhvsqv'
           />
+
+          <Post
+          author = 'Jorge'
+          content = 'GAVv dshdga  hdhvsqv'
+          />  
         </main>
         </div>
     </div>
