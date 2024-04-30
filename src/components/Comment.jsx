@@ -1,8 +1,26 @@
+import { useState } from 'react';
 import { Avatar } from './Avatar'
 import styles from './Comment.module.css'
 import {Trash,ThumbsUp} from 'phosphor-react'
 
-export function Comment() {
+export function Comment({content, onDeleteComment}) {
+
+    const [likeCount, setLikeCount] = useState(0)
+    function handleLikeComment(){
+        setLikeCount((state) => {
+            return state + 1
+        } );
+
+        // serve para obter o valor mais recente, que acabou de alterado, do estado 
+
+    }
+
+    function handleDeleteComment (){
+        onDeleteComment(content);
+    }
+
+
+
     return (
         <div className={styles.comment}>
             <Avatar hasBorder={false} src="https://github.com/jorgedss.png" alt="" />
@@ -15,17 +33,17 @@ export function Comment() {
                             <time title='08/04/2024' dateTime='2024-04-08'> Cerca de 1h atrás </time>
                         </div>
 
-                        <button title='Deletar comentário'>
+                        <button onClick={handleDeleteComment} title='Deletar comentário'>
                             <Trash size={24}/>
                         </button>
                     </header>
 
-                    <p>  Muito bom!</p>
+                    <p> {content} </p>
                 </div>
                 <footer>
-                    <button>
+                    <button onClick={handleLikeComment}>  
                         <ThumbsUp/>
-                        Aplaudir <span>20</span>
+                        Aplaudir <span>{likeCount}</span>
                     </button>
                 </footer>
             
